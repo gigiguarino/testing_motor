@@ -1,0 +1,41 @@
+{
+    "Modules": {
+        "std": {},
+        "...MASTER...": {},
+        "testbench": {
+            "Compiled Times": 4,
+            "Compiled": "Yes"
+        },
+        "motor_driver": {}
+    },
+    "CompUnits": {
+        "amcQw_d": {
+            "out": "objs/amcQw_d.o",
+            "mod": "...MASTER...",
+            "mode": 4,
+            "bytes": 7287,
+            "checksum": 4294967295
+        },
+        "iAVhC_d": {
+            "out": "iAVhC_d.o",
+            "mod": "testbench",
+            "mode": 4,
+            "bytes": 35499,
+            "checksum": 4294967295,
+            "archive": "archive.3/_5104_archive_1.a"
+        }
+    },
+    "reusePaths": {},
+    "ObjArchives": [
+        {
+            "archive": "archive.3/_5104_archive_1.a",
+            "objects": [
+                [
+                    "iAVhC_d.o",
+                    35499
+                ]
+            ],
+            "size": 35499
+        }
+    ]
+}

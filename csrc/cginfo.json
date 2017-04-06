@@ -1,0 +1,140 @@
+{
+    "MlibObjs": {},
+    "CurCompileUdps": {},
+    "CompileStatus": "Successful",
+    "PrevCompiledModules": {
+        "motor_driver": {
+            "UJ5Qh_d": {
+                "mode": 4,
+                "bytes": 13114,
+                "out": "UJ5Qh_d.o",
+                "mod": "motor_driver",
+                "checksum": 4294967295,
+                "archive": "archive.3/_prev_archive_1.a"
+            }
+        },
+        "...MASTER...": {
+            "amcQw_d": {
+                "mode": 4,
+                "bytes": 7287,
+                "out": "objs/amcQw_d.o",
+                "mod": "...MASTER...",
+                "checksum": 4294967295
+            }
+        },
+        "std": {
+            "reYIK_d": {
+                "mode": 4,
+                "bytes": 28470,
+                "out": "reYIK_d.o",
+                "mod": "std",
+                "checksum": 4294967295,
+                "archive": "archive.3/_prev_archive_1.a"
+            }
+        },
+        "testbench": {
+            "iAVhC_d": {
+                "mode": 4,
+                "bytes": 34791,
+                "out": "iAVhC_d.o",
+                "mod": "testbench",
+                "checksum": 4294967295,
+                "archive": "archive.3/_5104_archive_1.a"
+            }
+        }
+    },
+    "NameTable": {
+        "...MASTER...": [
+            "SIM",
+            "amcQw",
+            "module"
+        ],
+        "std": [
+            "std",
+            "reYIK",
+            "module"
+        ],
+        "testbench": [
+            "testbench",
+            "iAVhC",
+            "module"
+        ],
+        "motor_driver": [
+            "motor_driver",
+            "UJ5Qh",
+            "module"
+        ]
+    },
+    "CurCompileModules": [
+        "...MASTER...",
+        "testbench"
+    ],
+    "CompileProcesses": [
+        "cgproc.5104.json"
+    ],
+    "CompileStrategy": "fullobj",
+    "SIMBData": {
+        "out": "amcQwB.o",
+        "bytes": 58451
+    },
+    "PEModules": [],
+    "stat": {
+        "ru_self_cgstart": {
+            "ru_utime_sec": 0.17362900000000001,
+            "ru_minflt": 12611,
+            "ru_stime_sec": 0.18073700000000001,
+            "ru_nivcsw": 10,
+            "ru_majflt": 0,
+            "ru_maxrss_kb": 47712,
+            "ru_nvcsw": 108
+        },
+        "ru_self_end": {
+            "ru_utime_sec": 0.225493,
+            "ru_minflt": 14830,
+            "ru_stime_sec": 0.223443,
+            "ru_nivcsw": 10,
+            "ru_majflt": 0,
+            "ru_maxrss_kb": 55212,
+            "ru_nvcsw": 160
+        },
+        "ru_childs_cgstart": {
+            "ru_utime_sec": 0.0,
+            "ru_minflt": 0,
+            "ru_stime_sec": 0.0,
+            "ru_nivcsw": 0,
+            "ru_majflt": 0,
+            "ru_maxrss_kb": 0,
+            "ru_nvcsw": 0
+        },
+        "ru_childs_end": {
+            "ru_utime_sec": 0.0,
+            "ru_minflt": 0,
+            "ru_stime_sec": 0.0,
+            "ru_nivcsw": 0,
+            "ru_majflt": 0,
+            "ru_maxrss_kb": 0,
+            "ru_nvcsw": 0
+        },
+        "quadSpeed": 10932.438685793615,
+        "nMops": 1182,
+        "nQuads": 567,
+        "totalObjSize": 101237,
+        "mopSpeed": 22790.374826469229,
+        "Frontend(%)": 76.999729481624712,
+        "mop/quad": 2.0846560846560847,
+        "outputSizePerQuad": 178.0,
+        "CodeGen(%)": 23.000270518375288
+    },
+    "LVLData": [
+        "SIM"
+    ],
+    "Misc": {
+        "csrc": "csrc",
+        "cwd": "/home/gguarino/Documents/testing_motor",
+        "csrc_abs": "/home/gguarino/Documents/testing_motor/csrc",
+        "daidir": "/home/gguarino/Documents/testing_motor/simv.daidir",
+        "daidir_abs": "/home/gguarino/Documents/testing_motor/simv.daidir",
+        "archive_dir": "archive.3",
+        "default_output_dir": "csrc"
+    }
+}

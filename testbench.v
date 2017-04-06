@@ -2,10 +2,10 @@ module testbench;
 
 reg clk;
 reg reset;
-reg sel;
-reg enable;
-reg ready = 1;
-reg error = 0;
+reg psel;
+reg penable;
+reg ready;
+reg error;
 reg pwrite;
 reg [31:0] paddr;
 reg [31:0] pwdata;
@@ -17,11 +17,12 @@ reg y_dir_in, y_dir_out;
 reg fabint;
 
 
+
 motor_mmio_handler m (
   clk,
   reset,
-  sel,
-  enable,
+  psel,
+  penable,
   ready,
   error,
   pwrite,
@@ -92,6 +93,10 @@ task print_everything;
   $display("last_y_zero: %b", m.last_y_zero);
   $display("x_done: %b", m.x_done);
   $display("y_done: %b", m.y_done);
+  $display("----------------------------");
+  $display("----------------------------");
+  $display("----------------------------");
+  $display("----------------------------");
 endtask
 
 
@@ -126,14 +131,6 @@ initial begin
 
   @(posedge fabint);
 
-  paddr = 4;
-  psel = 1;
-  penable = 1;
-
-  @(negedge clk);
-
-  psel = 0;
-  penable = 0;
 
   
   $finish;

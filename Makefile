@@ -1,74 +1,66 @@
-# Given no targets, 'make' will default to building 'simv', the simulated version
-# of the pipeline
-
-# make          <- compile (and run) simv if needed
-
-# As shortcuts, any of the following will build if necessary and then run the
-# specified target
-
-# make sim      <- runs simv (after compiling simv if needed)
-# make dve      <- runs DVE interactively (after compiling it if needed)
-#                                
-
+# make          <- runs simv (after compiling simv if needed)
+# make all      <- runs simv (after compiling simv if needed)
+# make simv     <- compile simv if needed (but do not run)
+# make syn      <- runs syn_simv (after synthesizing if needed then 
+#                                 compiling synsimv if needed)
 # make clean    <- remove files created during compilations (but not synthesis)
 # make nuke     <- remove all files created during compilation and synthesis
 #
-# synthesis command not included in this Makefile
+# To compile additional files, add them to the TESTBENCH or SIMFILES as needed
+# Every .vg file will need its own rule and one or more synthesis scripts
+# The information contained here (in the rules for those vg files) will be 
+# similar to the information in those scripts but that seems hard to avoid.
 #
+#t
 
-################################################################################
-## CONFIGURATION
-################################################################################
-
-VCS = SW_VCS=2015.09 vcs -sverilog +vc -Mupdate -line -full64
+VCS = SW_VCS=2015.09 vcs -sverilog +vc +lint=PCWM +lint=TFIPC-L -Mupdate -line -full64
 LIB = /afs/umich.edu/class/eecs470/lib/verilog/lec25dscc25.v
 
-# SIMULATION CONFIG
+# For visual debugger
+VISFLAGS = -lncurses
 
-SIMFILES	= P1a.v
-TESTBENCH	= test.v
 
-# SYNTHESIS CONFIG
+##############################################################
+###################### FINAL MAKE ############################
+##############################################################
 
-# Passed through to .tcl scripts:
-export CLOCK_NET_NAME = clock
-export RESET_NET_NAME = reset
-export CLOCK_PERIOD = 50	# TODO: You will want to make this more aggresive
 
-################################################################################
-## RULES
-################################################################################
-
-# Default target:
-all:	simv
+all: simv
 	./simv | tee program.out
 
-.PHONY: all
 
-# Simulation:
+SIMFILES  = motor_driver.v motor_mmio_handler.v
 
-sim:	simv $(ASSEMBLED)
-	./simv | tee sim_program.out
+SYNFILES = motor_mmio_handler.vg
 
-simv:	$(HEADERS) $(SIMFILES) $(TESTBENCH)
-	$(VCS) $^ -o simv
+TESTBENCH = testbench.v
 
-.PHONY: sim
+simv: $(SIMFILES) $(TESTBENCH)
+	$(VCS) $(TESTBENCH) $(SIMFILES) -o simv
 
-# Debugging
+syn_simv: $(SYNFILES) $(TESTBENCH) 
+	$(VCS) $(TESTBENCH) $(SYNFILES) $(LIB) -o syn_simv
 
-dve_simv:	$(HEADERS) $(SIMFILES) $(TESTBENCH)
-	$(VCS) +memcbk $^ -o $@ -gui
+syn_dve: $(SYNFILES) $(TESTBENCH)
+	$(VCS) +memcbk $(TESTBENCH) $(SYNFILES) $(LIB) -o dve -R -gui
 
-dve:	dve_simv $(ASSEMBLED)
-	./$<
+
+syn: syn_simv
+	./syn_simv | tee syn_program.out
+
+motor_mmio_handler.vg: motor_mmio_handler.tcl
+	dc_shell-t -f ./motor_mmio_handler.tcl | tee synth.out
 
 clean:
-	rm -rvf simv *.daidir csrc vcs.key program.out \
-	syn_simv syn_simv.daidir syn_program.out \
-	dve *.vpd *.vcd *.dump ucli.key 
+	rm -rf simv simv.daidir csrc vcs.key program.out writeback.out debug.out
+	rm -rf vis_simv vis_simv.daidir
+	rm -rf dve*
+	rm -rf syn_simv syn_simv.daidir syn_program.out
+	rm -rf synsimv synsimv.daidir csrc vcdplus.vpd vcs.key synprog.out pipeline.out writeback.out vc_hdrs.h
+	rm -rf simv* syn_simv*
+	rm -f tempfile
 
 nuke:	clean
-	rm -rvf *.vg *.rep *.db *.chk *.log *.out DVEfiles/
-
-.PHONY: clean nuke dve
+	rm -f synth/*.vg synth/*.rep synth/*.pvl synth/*.syn synth/*.ddc synth/*.chk synth/command.log
+	rm -f synth/*.out command.log synth/*.db synth/*.svf
+	rm -rf synth/*.mr

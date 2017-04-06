@@ -1,0 +1,89 @@
+0 
+30
++lint=PCWM
++lint=TFIPC-L
++vc
+-Mamsrun=
+-Masflags=
+-Mcc=gcc
+-Mcfl= -pipe -fPIC -O -I/usr/caen/vcs-2015.09/include
+-Mcplusplus=g++
+-Mcrt0=
+-Mcrtn=
+-Mcsrc=
+-Mexternalobj=
+-Mldflags= -rdynamic
+-Mobjects= /usr/caen/vcs-2015.09/linux64/lib/libvirsim.so /usr/caen/vcs-2015.09/linux64/lib/liberrorinf.so /usr/caen/vcs-2015.09/linux64/lib/libsnpsmalloc.so
+-Mout=simv
+-Msaverestoreobj=/usr/caen/vcs-2015.09/linux64/lib/vcs_save_restore_new.o
+-Msyslibs=-ldl
+-Mupdate
+-Mvcsaceobjs=
+-Mxcflags= -pipe -fPIC -I/usr/caen/vcs-2015.09/include
+-full64
+-gen_obj
+-line
+-o simv
+-picarchive
+-sverilog
+/usr/caen/vcs-2015.09/linux64/bin/vcs1
+motor_driver.v
+motor_mmio_handler.v
+testbench.v
+45
+sysc_uni_pwd=/home/gguarino/Documents/testing_motor
+_LMFILES_=/usr/caen/misc/modules/vcs/2015.09
+XMODIFIERS=@im=ibus
+XDG_SESSION_ID=13060
+XDG_RUNTIME_DIR=/run/user/99429461
+VMR_MODE_FLAG=64
+VCS_MODE_FLAG=64
+VCS_HOME=/usr/caen/vcs-2015.09
+VCS_DEPTH=0
+VCS_ARG_ADDED_FOR_TMP=1
+VCS_ARCH=linux64
+UNAME=/bin/uname
+TOOL_HOME=/usr/caen/vcs-2015.09/linux64
+SW_VCS=2015.09
+SSH_TTY=/dev/pts/10
+SSH_CONNECTION=35.2.208.148 54649 141.213.74.69 22
+SSH_CLIENT=35.2.208.148 54649 22
+SSH_ASKPASS=/usr/libexec/openssh/gnome-ssh-askpass
+SNPSLMD_LICENSE_FILE=/usr/caen/vcs-2015.09/license.dat
+SELINUX_USE_CURRENT_RANGE=
+SELINUX_ROLE_REQUESTED=
+SELINUX_LEVEL_REQUESTED=
+SCRNAME=vcs
+SCRIPT_NAME=vcs
+QT_PLUGIN_PATH=/usr/lib64/kde4/plugins:/usr/lib/kde4/plugins
+QT_IM_MODULE=ibus
+QT_GRAPHICSSYSTEM_CHECKED=1
+QTLIB=/usr/lib64/qt-3.3/lib
+QTINC=/usr/lib64/qt-3.3/include
+QTDIR=/usr/lib64/qt-3.3
+OVA_UUM=0
+MODULESHOME=/usr/share/Modules
+MODULEPATH=/usr/share/Modules/modulefiles:/etc/modulefiles:/usr/caen/misc/modules:/afs/umich.edu/class/coe/modules
+MFLAGS=
+MAKELEVEL=1
+MAKEFLAGS=
+LOADEDMODULES=vcs/2015.09
+LESSOPEN=||/usr/bin/lesspipe.sh %s
+LC_ALL=C
+KRB5CCNAME=FILE:/tmp/krb5cc_99429461_ZFjlYA
+KDEDIRS=/usr
+HISTCONTROL=ignoredups
+GTK_IM_MODULE=ibus
+CINNAMON_2D=1
+BASH_FUNC_module()=() {  eval `/usr/bin/modulecmd bash $*`_}
+0
+3
+1491438504 motor_mmio_handler.v
+1491438504 motor_driver.v
+1491440837 testbench.v
+4
+0 
+1440563255 /usr/caen/vcs-2015.09/linux64/lib/libvirsim.so
+1440562843 /usr/caen/vcs-2015.09/linux64/lib/liberrorinf.so
+1440562824 /usr/caen/vcs-2015.09/linux64/lib/libsnpsmalloc.so
+1491440846 simv.daidir
