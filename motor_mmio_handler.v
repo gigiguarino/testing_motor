@@ -24,12 +24,12 @@ module motor_mmio_handler(
 
         output wire FABINT
     );
-    wire x_zero;
-    reg last_x_zero;
-    wire y_zero;
-    reg last_y_zero;
     wire x_done;
     wire y_done;
+    wire x_zero;
+    wire y_zero;
+    reg last_x_zero;
+    reg last_y_zero;
 
     assign x_zero = (x_counter_in == 0);
     assign y_zero = (y_counter_in == 0);
@@ -76,14 +76,25 @@ module motor_mmio_handler(
                 end
             end
             else begin
+
                 if(x_done) begin
                     x_dir_out     <= 0;
                     x_counter_out <= 0;
                 end
+                else begin
+                    x_dir_out     <= x_dir_out;
+                    x_counter_out <= x_counter_out;
+                end
+
                 if(y_done) begin
                     y_dir_out     <= 0;
                     y_counter_out <= 0;
                 end
+                else begin
+                    y_dir_out     <= y_dir_out;
+                    y_counter_out <= y_counter_out;
+                end
+
             end
         end
         last_x_zero <= x_zero;

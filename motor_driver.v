@@ -5,10 +5,10 @@ module motor_driver(
         input dir_in,
         output reg [3:0] hb_state,
         output [3:0] hb_state_debug,
-        output reg [31:0] counter,
+        output reg [31:0] n_counter,
         output reg dir
     );
-    reg [31:0] n_counter;
+    reg [31:0] counter;
     reg n_dir;
     reg [3:0] n_hb_state;
 
@@ -20,12 +20,17 @@ module motor_driver(
         n_hb_state = hb_state;
         n_dir = dir;
 
-        if(!dir) begin // REVERSE
+        if(hb_state == 4'b0000) begin
+            n_counter = counter_in;
+            n_dir = dir_in;
+        end
+
+        if(!n_dir) begin // REVERSE
 
             case(hb_state)
                 default: begin// 4'b0000 TODO IS THIS COAST? SHOULD IT BE BRAKE?
-                    n_counter = counter_in;
-                    n_dir = dir_in;
+                    //n_counter = counter_in;
+                    //n_dir = dir_in;
                     if(n_counter > 0) begin   // start movement
                         n_hb_state = 4'b1010;
                     end
@@ -58,8 +63,8 @@ module motor_driver(
 
             case(hb_state)
                 default: begin// 4'b0000 TODO IS THIS COAST? SHOULD IT BE BRAKE?
-                    n_counter = counter_in;
-                    n_dir = dir_in;
+                    //n_counter = counter_in;
+                    //n_dir = dir_in;
                     if(n_counter > 0) begin   // start movement
                         n_hb_state = 4'b1001;
                     end
