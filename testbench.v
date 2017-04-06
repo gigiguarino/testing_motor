@@ -15,7 +15,10 @@ reg x_dir_in, x_dir_out;
 reg [31:0] y_counter_in, y_counter_out;
 reg y_dir_in, y_dir_out;
 reg fabint;
-
+reg [3:0] hb_statey1;
+reg [3:0] hb_statey2;
+reg [3:0] hb_statex1;
+reg [3:0] hb_statex2;
 
 
 motor_mmio_handler m (
@@ -69,6 +72,11 @@ always begin
 end
 
 task print_everything;
+  $display("----------------------------");
+  $display("STATES");
+  $display("----------------------------");
+  $display("x_state: %b", hb_statex1);
+  $display("y_state: %b", hb_statey1);
   $display("----------------------------");
   $display("INPUTS OF MMIO:"); 
   $display("----------------------------");
