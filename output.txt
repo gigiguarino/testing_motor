@@ -1,6 +1,6 @@
 SW_VCS=2015.09 vcs -sverilog +vc +lint=PCWM +lint=TFIPC-L -Mupdate -line -full64 testbench.v motor_driver.v motor_mmio_handler.v -o simv
                          Chronologic VCS (TM)
-         Version K-2015.09_Full64 -- Wed Apr  5 21:07:24 2017
+         Version K-2015.09_Full64 -- Fri Apr 14 01:53:01 2017
                Copyright (c) 1991-2015 by Synopsys Inc.
                          ALL RIGHTS RESERVED
 
@@ -9,6 +9,11 @@ and may be used and disclosed only as authorized in a license agreement
 controlling such use and disclosure.
 
 Parsing design file 'testbench.v'
+
+Warning-[IPDW] Identifier previously declared
+testbench.v, 8
+  Second declaration for identifier 'pwdata' ignored
+
 Parsing design file 'motor_driver.v'
 Parsing design file 'motor_mmio_handler.v'
 Top Level Modules:
@@ -16,2497 +21,1547 @@ Top Level Modules:
 No TimeScale specified
 
 Lint-[PCWM-L] Port connection width mismatch
-testbench.v, 43
-"motor_driver mdx(clk, reset, x_counter_out, x_dir_out, hb_statex1, hb_statex2, x_counter_in, x_dir_in);"
-  The following 1-bit expression is connected to 4-bit port "hb_state" of 
-  module "motor_driver", instance "mdx".
-  Expression: hb_statex1
-  The expression is from module testbench
-
-
-Lint-[PCWM-L] Port connection width mismatch
-testbench.v, 43
-"motor_driver mdx(clk, reset, x_counter_out, x_dir_out, hb_statex1, hb_statex2, x_counter_in, x_dir_in);"
-  The following 1-bit expression is connected to 4-bit port "hb_state_debug" 
-  of module "motor_driver", instance "mdx".
-  Expression: hb_statex2
-  The expression is from module testbench
-
-
-Lint-[PCWM-L] Port connection width mismatch
-testbench.v, 54
-"motor_driver mdy(clk, reset, y_counter_out, y_dir_out, hb_statey1, hb_statey2, y_counter_in, y_dir_in);"
-  The following 1-bit expression is connected to 4-bit port "hb_state" of 
-  module "motor_driver", instance "mdy".
-  Expression: hb_statey1
-  The expression is from module testbench
-
-
-Lint-[PCWM-L] Port connection width mismatch
-testbench.v, 54
-"motor_driver mdy(clk, reset, y_counter_out, y_dir_out, hb_statey1, hb_statey2, y_counter_in, y_dir_in);"
-  The following 1-bit expression is connected to 4-bit port "hb_state_debug" 
-  of module "motor_driver", instance "mdy".
-  Expression: hb_statey2
+testbench.v, 10
+"motor_mmio_handler mm0(clk, reset, sel, en, ready, error, pwrite, paddr, pwdata, prdata, counter_in, dir_in, other_counter_in, other_dir_in, counter_out, dir_out, other_counter_out, other_dir_out, fabint);"
+  The following 1-bit expression is connected to 32-bit port "PRDATA" of 
+  module "motor_mmio_handler", instance "mm0".
+  Expression: prdata
   The expression is from module testbench
 
 Starting vcs inline pass...
-3 modules and 0 UDP read.
+2 modules and 0 UDP read.
 	However, due to incremental compilation, only 1 module needs to be compiled.
 recompiling module testbench because:
 	This module or some inlined child module(s) has/have been modified.
 make[1]: Entering directory `/home/gguarino/Documents/testing_motor/csrc'
-make[1]: Leaving directory `/home/gguarino/Documents/testing_motor/csrc'
-make[1]: Entering directory `/home/gguarino/Documents/testing_motor/csrc'
 rm -f _csrc*.so linux64_scvhdl_*.so pre_vcsobj_*.so share_vcsobj_*.so
 if [ -x ../simv ]; then chmod -x ../simv; fi
-g++  -o ../simv   -Wl,-rpath-link=./ -Wl,-rpath='$ORIGIN'/simv.daidir/ -Wl,-rpath=./simv.daidir/ -Wl,-rpath='$ORIGIN'/simv.daidir//scsim.db.dir  -rdynamic   amcQwB.o objs/amcQw_d.o   _5104_archive_1.so _prev_archive_1.so  SIM_l.o       rmapats_mop.o rmapats.o rmar.o  rmar_llvm_0_1.o rmar_llvm_0_0.o          /usr/caen/vcs-2015.09/linux64/lib/libzerosoft_rt_stubs.so /usr/caen/vcs-2015.09/linux64/lib/libvirsim.so /usr/caen/vcs-2015.09/linux64/lib/liberrorinf.so /usr/caen/vcs-2015.09/linux64/lib/libsnpsmalloc.so    /usr/caen/vcs-2015.09/linux64/lib/libvcsnew.so /usr/caen/vcs-2015.09/linux64/lib/libsimprofile.so /usr/caen/vcs-2015.09/linux64/lib/libuclinative.so   -Wl,-whole-archive /usr/caen/vcs-2015.09/linux64/lib/libvcsucli.so -Wl,-no-whole-archive          /usr/caen/vcs-2015.09/linux64/lib/vcs_save_restore_new.o -ldl  -lc -lm -lpthread -ldl 
+g++  -o ../simv   -Wl,-rpath-link=./ -Wl,-rpath='$ORIGIN'/simv.daidir/ -Wl,-rpath=./simv.daidir/ -Wl,-rpath='$ORIGIN'/simv.daidir//scsim.db.dir  -rdynamic   amcQwB.o objs/amcQw_d.o   _17726_archive_1.so _prev_archive_1.so  SIM_l.o       rmapats_mop.o rmapats.o rmar.o  rmar_llvm_0_1.o rmar_llvm_0_0.o          /usr/caen/vcs-2015.09/linux64/lib/libzerosoft_rt_stubs.so /usr/caen/vcs-2015.09/linux64/lib/libvirsim.so /usr/caen/vcs-2015.09/linux64/lib/liberrorinf.so /usr/caen/vcs-2015.09/linux64/lib/libsnpsmalloc.so    /usr/caen/vcs-2015.09/linux64/lib/libvcsnew.so /usr/caen/vcs-2015.09/linux64/lib/libsimprofile.so /usr/caen/vcs-2015.09/linux64/lib/libuclinative.so   -Wl,-whole-archive /usr/caen/vcs-2015.09/linux64/lib/libvcsucli.so -Wl,-no-whole-archive          /usr/caen/vcs-2015.09/linux64/lib/vcs_save_restore_new.o -ldl  -lc -lm -lpthread -ldl 
 ../simv up to date
 make[1]: Leaving directory `/home/gguarino/Documents/testing_motor/csrc'
-CPU time: .576 seconds to compile + .886 seconds to elab + .401 seconds to link
+CPU time: .194 seconds to compile + .022 seconds to elab + .207 seconds to link
 ./simv | tee program.out
 Chronologic VCS simulator copyright 1991-2015
 Contains Synopsys proprietary information.
-Compiler version K-2015.09_Full64; Runtime version K-2015.09_Full64;  Apr  5 21:07 2017
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          x
-y_counter_in:          x
-x_dir_in: x
-y_dir_in: x
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          x
-y_counter_out:          x
-x_dir_out: x
-y_dir_out: x
-fabint: x
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: x
-y_zero: x
-last_x_zero: x
-last_y_zero: x
-x_done: x
-y_done: x
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          0
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          0
-x_dir_out: 1
-y_dir_out: 1
-fabint: x
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 1
-last_x_zero: x
-last_y_zero: x
-x_done: x
-y_done: x
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          0
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          0
-x_dir_out: 1
-y_dir_out: 1
-fabint: x
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 1
-last_x_zero: x
-last_y_zero: x
-x_done: x
-y_done: x
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          0
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          5
-x_dir_out: 1
-y_dir_out: 1
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 1
-last_x_zero: 1
-last_y_zero: 1
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          0
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          5
-x_dir_out: 1
-y_dir_out: 1
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 1
-last_x_zero: 1
-last_y_zero: 1
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          5
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          5
-x_dir_out: 1
-y_dir_out: 1
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 1
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          5
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          5
-x_dir_out: 1
-y_dir_out: 1
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 1
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          5
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          5
-x_dir_out: 1
-y_dir_out: 1
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          5
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          5
-x_dir_out: 1
-y_dir_out: 1
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          5
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          5
-x_dir_out: 1
-y_dir_out: 1
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          5
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          5
-x_dir_out: 1
-y_dir_out: 1
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          5
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          5
-x_dir_out: 1
-y_dir_out: 1
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          5
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          5
-x_dir_out: 1
-y_dir_out: 1
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          4
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          5
-x_dir_out: 1
-y_dir_out: 1
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          4
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          5
-x_dir_out: 1
-y_dir_out: 1
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          4
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          5
-x_dir_out: 1
-y_dir_out: 1
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          4
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          5
-x_dir_out: 1
-y_dir_out: 1
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          4
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          5
-x_dir_out: 1
-y_dir_out: 1
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          4
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          5
-x_dir_out: 1
-y_dir_out: 1
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          4
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          5
-x_dir_out: 1
-y_dir_out: 1
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          4
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          5
-x_dir_out: 1
-y_dir_out: 1
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          3
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          5
-x_dir_out: 1
-y_dir_out: 1
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          3
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          5
-x_dir_out: 1
-y_dir_out: 1
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          3
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          5
-x_dir_out: 1
-y_dir_out: 1
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          3
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          5
-x_dir_out: 1
-y_dir_out: 1
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          3
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          5
-x_dir_out: 1
-y_dir_out: 1
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          3
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          5
-x_dir_out: 1
-y_dir_out: 1
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          3
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          5
-x_dir_out: 1
-y_dir_out: 1
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          3
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          5
-x_dir_out: 1
-y_dir_out: 1
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          2
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          5
-x_dir_out: 1
-y_dir_out: 1
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          2
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          5
-x_dir_out: 1
-y_dir_out: 1
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          2
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          5
-x_dir_out: 1
-y_dir_out: 1
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          2
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          5
-x_dir_out: 1
-y_dir_out: 1
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          2
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          5
-x_dir_out: 1
-y_dir_out: 1
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          2
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          5
-x_dir_out: 1
-y_dir_out: 1
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          2
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          5
-x_dir_out: 1
-y_dir_out: 1
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          2
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          5
-x_dir_out: 1
-y_dir_out: 1
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          1
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          5
-x_dir_out: 1
-y_dir_out: 1
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          1
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          5
-x_dir_out: 1
-y_dir_out: 1
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          1
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          5
-x_dir_out: 1
-y_dir_out: 1
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          1
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          5
-x_dir_out: 1
-y_dir_out: 1
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          1
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          5
-x_dir_out: 1
-y_dir_out: 1
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          1
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          5
-x_dir_out: 1
-y_dir_out: 1
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          1
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          5
-x_dir_out: 1
-y_dir_out: 1
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          1
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          5
-x_dir_out: 1
-y_dir_out: 1
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          0
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          5
-x_dir_out: 1
-y_dir_out: 1
-fabint: 1
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 1
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 1
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          0
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          5
-x_dir_out: 1
-y_dir_out: 1
-fabint: 1
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 1
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 1
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          5
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          0
-x_dir_out: 1
-y_dir_out: 0
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 1
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          5
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          0
-x_dir_out: 1
-y_dir_out: 0
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 1
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          5
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          0
-x_dir_out: 1
-y_dir_out: 0
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          5
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          0
-x_dir_out: 1
-y_dir_out: 0
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          5
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          0
-x_dir_out: 1
-y_dir_out: 0
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          5
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          0
-x_dir_out: 1
-y_dir_out: 0
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          5
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          0
-x_dir_out: 1
-y_dir_out: 0
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          5
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          0
-x_dir_out: 1
-y_dir_out: 0
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          4
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          0
-x_dir_out: 1
-y_dir_out: 0
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          4
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          0
-x_dir_out: 1
-y_dir_out: 0
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          4
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          0
-x_dir_out: 1
-y_dir_out: 0
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          4
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          0
-x_dir_out: 1
-y_dir_out: 0
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          4
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          0
-x_dir_out: 1
-y_dir_out: 0
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          4
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          0
-x_dir_out: 1
-y_dir_out: 0
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          4
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          0
-x_dir_out: 1
-y_dir_out: 0
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          4
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          0
-x_dir_out: 1
-y_dir_out: 0
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          3
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          0
-x_dir_out: 1
-y_dir_out: 0
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          3
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          0
-x_dir_out: 1
-y_dir_out: 0
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          3
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          0
-x_dir_out: 1
-y_dir_out: 0
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          3
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          0
-x_dir_out: 1
-y_dir_out: 0
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          3
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          0
-x_dir_out: 1
-y_dir_out: 0
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          3
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          0
-x_dir_out: 1
-y_dir_out: 0
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          3
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          0
-x_dir_out: 1
-y_dir_out: 0
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          3
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          0
-x_dir_out: 1
-y_dir_out: 0
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          2
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          0
-x_dir_out: 1
-y_dir_out: 0
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          2
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          0
-x_dir_out: 1
-y_dir_out: 0
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          2
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          0
-x_dir_out: 1
-y_dir_out: 0
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          2
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          0
-x_dir_out: 1
-y_dir_out: 0
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          2
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          0
-x_dir_out: 1
-y_dir_out: 0
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          2
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          0
-x_dir_out: 1
-y_dir_out: 0
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          2
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          0
-x_dir_out: 1
-y_dir_out: 0
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          2
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          0
-x_dir_out: 1
-y_dir_out: 0
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          1
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          0
-x_dir_out: 1
-y_dir_out: 0
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          1
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          0
-x_dir_out: 1
-y_dir_out: 0
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          1
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          0
-x_dir_out: 1
-y_dir_out: 0
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          1
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          0
-x_dir_out: 1
-y_dir_out: 0
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          1
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          0
-x_dir_out: 1
-y_dir_out: 0
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          1
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          0
-x_dir_out: 1
-y_dir_out: 0
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          1
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          0
-x_dir_out: 1
-y_dir_out: 0
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-INPUTS OF MMIO:
-----------------------------
-x_counter_in:          0
-y_counter_in:          1
-x_dir_in: 1
-y_dir_in: 1
-----------------------------
-OUTPUTS OF MMIO
-----------------------------
-x_counter_out:          0
-y_counter_out:          0
-x_dir_out: 1
-y_dir_out: 0
-fabint: 0
-----------------------------
-INSIDE MODULE
-----------------------------
-x_zero: 1
-y_zero: 0
-last_x_zero: 1
-last_y_zero: 0
-x_done: 0
-y_done: 0
-----------------------------
-----------------------------
-----------------------------
-----------------------------
-$finish called from file "testbench.v", line 136.
-$finish at simulation time                  435
+Compiler version K-2015.09_Full64; Runtime version K-2015.09_Full64;  Apr 14 01:53 2017
+-----------
+INPUTS
+-----------
+counter_in:          5
+dir_in: 1
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 1
+state: 1010
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          5
+dir_in: 1
+-----------
+OUTPUTS
+-----------
+counter_out:          5
+dir_out: 1
+state: 1010
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          5
+dir_in: 1
+-----------
+OUTPUTS
+-----------
+counter_out:          4
+dir_out: 1
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          5
+dir_in: 1
+-----------
+OUTPUTS
+-----------
+counter_out:          4
+dir_out: 1
+state: 0101
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          5
+dir_in: 1
+-----------
+OUTPUTS
+-----------
+counter_out:          4
+dir_out: 1
+state: 0110
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          5
+dir_in: 1
+-----------
+OUTPUTS
+-----------
+counter_out:          4
+dir_out: 1
+state: 1010
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          5
+dir_in: 1
+-----------
+OUTPUTS
+-----------
+counter_out:          3
+dir_out: 1
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          5
+dir_in: 1
+-----------
+OUTPUTS
+-----------
+counter_out:          3
+dir_out: 1
+state: 0101
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          5
+dir_in: 1
+-----------
+OUTPUTS
+-----------
+counter_out:          3
+dir_out: 1
+state: 0110
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          5
+dir_in: 1
+-----------
+OUTPUTS
+-----------
+counter_out:          3
+dir_out: 1
+state: 1010
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          5
+dir_in: 1
+-----------
+OUTPUTS
+-----------
+counter_out:          2
+dir_out: 1
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          5
+dir_in: 1
+-----------
+OUTPUTS
+-----------
+counter_out:          2
+dir_out: 1
+state: 0101
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          5
+dir_in: 1
+-----------
+OUTPUTS
+-----------
+counter_out:          2
+dir_out: 1
+state: 0110
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          5
+dir_in: 1
+-----------
+OUTPUTS
+-----------
+counter_out:          2
+dir_out: 1
+state: 1010
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          5
+dir_in: 1
+-----------
+OUTPUTS
+-----------
+counter_out:          1
+dir_out: 1
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          5
+dir_in: 1
+-----------
+OUTPUTS
+-----------
+counter_out:          1
+dir_out: 1
+state: 0101
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          5
+dir_in: 1
+-----------
+OUTPUTS
+-----------
+counter_out:          1
+dir_out: 1
+state: 0110
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          5
+dir_in: 1
+-----------
+OUTPUTS
+-----------
+counter_out:          1
+dir_out: 1
+state: 1010
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          5
+dir_in: 1
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 1
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 1
+state: 0101
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 1
+state: 0110
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 1
+state: 1010
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          0
+dir_in: 0
+-----------
+OUTPUTS
+-----------
+counter_out:          0
+dir_out: 0
+state: 1001
+-----------
+-----------
+-----------
+-----------
+$finish called from file "testbench.v", line 90.
+$finish at simulation time                 1020
            V C S   S i m u l a t i o n   R e p o r t 
-Time: 435
-CPU Time:      0.860 seconds;       Data structure size:   0.0Mb
-Wed Apr  5 21:07:28 2017
+Time: 1020
+CPU Time:      0.600 seconds;       Data structure size:   0.0Mb
+Fri Apr 14 01:53:03 2017

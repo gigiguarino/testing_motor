@@ -10,9 +10,9 @@
 #/* new design                                              */
 #/***********************************************************/
 set search_path [ list "./" "/afs/umich.edu/class/eecs470/lib/synopsys/"]
-analyze -f sverilog [list "motor_mmio_handler.v motor_driver.v"] 
-elaborate motor_mmio_handler
-set design_name motor_mmio_handler
+analyze -f sverilog [list "motor_driver.v motor_mmio_handler.v"] 
+elaborate motor_driver
+set design_name motor_driver
 set clock_name clk
 set reset_name reset
 set CLK_PERIOD 20

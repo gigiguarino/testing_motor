@@ -31,7 +31,7 @@ all: simv
 
 SIMFILES  = motor_driver.v motor_mmio_handler.v
 
-SYNFILES = motor_mmio_handler.vg
+SYNFILES = motor_driver.vg
 
 TESTBENCH = testbench.v
 
@@ -48,8 +48,8 @@ syn_dve: $(SYNFILES) $(TESTBENCH)
 syn: syn_simv
 	./syn_simv | tee syn_program.out
 
-motor_mmio_handler.vg: motor_mmio_handler.tcl
-	dc_shell-t -f ./motor_mmio_handler.tcl | tee synth.out
+motor_driver.vg: motor_driver.tcl
+	dc_shell-t -f ./motor_driver.tcl | tee synth.out
 
 clean:
 	rm -rf simv simv.daidir csrc vcs.key program.out writeback.out debug.out

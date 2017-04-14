@@ -177,7 +177,6 @@ if {  $dc_shell_status != [list] } {
 Error: Can't find design 'motor_mmio_handler'. (UID-109)
 Error: Current design is not defined. (UID-4)
 Error: Current design is not defined. (UID-4)
-Warning: You requested 4 cores. However, load on host caen-vnc-vm10.engin.umich.edu is 5.14. Tool will ignore the request and use 3 cores. (UIO-231)
 Error: Current design is not defined. (UID-4)
 Error: Can't find object 'motor_mmio_handler'. (UID-109)
 Error: Value for list 'object_list' must have 1 elements. (CMD-036)

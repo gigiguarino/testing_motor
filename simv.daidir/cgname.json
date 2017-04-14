@@ -1,9 +1,4 @@
 {
-    "...MASTER...": [
-        "SIM",
-        "amcQw",
-        "module"
-    ],
     "std": [
         "std",
         "reYIK",
@@ -14,9 +9,9 @@
         "iAVhC",
         "module"
     ],
-    "motor_driver": [
-        "motor_driver",
-        "UJ5Qh",
+    "...MASTER...": [
+        "SIM",
+        "amcQw",
         "module"
     ]
 }
