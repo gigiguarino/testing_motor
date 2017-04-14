@@ -22,77 +22,74 @@ module motor_mmio_handler(
         output reg  [31:0] y_counter_out,
         output reg         y_dir_out,
 
-        output wire FABINT
+        output reg fabint
     );
 
-    reg n_x_dir_out, n_y_dir_out;
+    reg n_x_dir_out, n_y_dir_out, n_fabint;
     reg [31:0] n_x_counter_out, n_y_counter_out;
+    reg start, x_done, y_done;
     
-    wire write;
-    wire read;
-
-    wire x_done;
-    wire y_done;
-    wire x_zero;
-    wire y_zero;
-    reg last_x_zero;
-    reg last_y_zero;
-
-    assign x_zero = (x_counter_in == 0);
-    assign y_zero = (y_counter_in == 0);
-
-    assign x_done = (x_zero & ~last_x_zero);
-    assign y_done = (y_zero & ~last_y_zero);
-
-    assign FABINT = x_done | y_done;
+    wire writex, writey;
 
     assign PRDATA = 0;
     assign PSLVERR = 0;
     assign PREADY  = 1;
     
     assign writex = (PSEL & PENABLE & PWRITE & ~PADDR[2]);
-    assign readx = (PSEL & PENABLE & ~PWRITE & ~PADDR[2]);
     assign writey = (PSEL & PENABLE & PWRITE & PADDR[2]);
-    assign ready = (PSEL & PENABLE & ~PWRITE & PADDR[2]);
+    
+    assign x_done = x_change | ;
+    assign y_done = y_change;
+
 
     always @* begin
+       n_x_counter_out = x_counter_out;
+       n_y_counter_out = y_counter_out;
+       n_y_dir_out = y_dir_out;
+       n_x_dir_out = x_dir_out;
+       n_fabint = fabint;
        
+       if (x_done && y_done)
+       begin
+          n_fabint = 1;
+       end
+       else begin
+          n_fabint = 0;
+       end
     end
 
 
     always @(posedge PCLK) begin
-      if (!PRESETN) begin
+      if (!PRESERN) begin
+        x_counter_out <= 0;
+        y_counter_out <= 0;
+        x_dir_out <= 1;
+        y_dir_out <= 1;
+        start <= 1;
+        fabint <= 0;
       end else begin
-        
         if (writex) begin
-          x_counter_out <=    
-        else if (writey) begin
-          x_counter_out <=
-          y_counter_out <=
-          x_dir_out <=
-          y_dir_out <= 
+          x_counter_out <= (~PWDATA[31]) ? PWDATA : ~PWDATA + 1;    
+          y_counter_out <= n_y_counter_out;
+          x_dir_out <= ~PWDATA[31];
+          y_dir_out <= n_y_dir_out;
+          start <= 0;
+          fabint <= n_fabint;
+        end else if (writey) begin
+          x_counter_out <= n_x_counter_out;
+          y_counter_out <= (~PWDATA[31]) ? PWDATA : ~PWDATA + 1;
+          x_dir_out <= n_x_dir_out;
+          y_dir_out <= ~PWDATA[31];
+          start <= 0;
+          fabint <= n_fabint;
         end else begin
           x_counter_out <= n_x_counter_out;
-          y_counter_our <= n_y_counter_out;
+          y_counter_out <= n_y_counter_out;
           x_dir_out <= n_x_dir_out;
           y_dir_out <= n_y_dir_out;
+          fabint <= n_fabint;
         end
       end
-      
     end
 
-
-                    if(~PADDR[2]) begin
-                        x_dir_out     <= ~PWDATA[31];
-                        x_counter_out <= (~PWDATA[31])? PWDATA : ~PWDATA + 1;
-                    end
-                    else begin
-                        y_dir_out     <= ~PWDATA[31];
-                        y_counter_out <= (~PWDATA[31])? PWDATA : ~PWDATA + 1;
-                else begin
-                    if(~PADDR[2]) begin
-                        PRDATA <= (x_dir_in)? x_counter_in : ~x_counter_in + 1;
-                    end
-                    else begin
-                        PRDATA <= (y_dir_in)? y_counter_in : ~y_counter_in + 1;
 endmodule

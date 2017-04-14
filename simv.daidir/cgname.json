@@ -1,17 +1,22 @@
 {
-    "std": [
-        "std",
-        "reYIK",
-        "module"
-    ],
     "testbench": [
         "testbench",
         "iAVhC",
         "module"
     ],
+    "std": [
+        "std",
+        "reYIK",
+        "module"
+    ],
     "...MASTER...": [
         "SIM",
         "amcQw",
+        "module"
+    ],
+    "motor_driver": [
+        "motor_driver",
+        "UJ5Qh",
         "module"
     ]
 }

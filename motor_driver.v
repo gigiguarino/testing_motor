@@ -21,8 +21,14 @@ module motor_driver(
         n_dir = dir;
         n_change = change;
 
-        if(!dir) begin // REVERSE
+        if (change) begin
+          n_counter = counter_in;
+          n_dir = dir_in;
+          n_change = 1'b0;
+          n_hb_state = 4'b0000;
+        end
 
+        else if(!dir) begin // REVERSE
             case(hb_state)
                 4'b1010: begin
                     n_hb_state = 4'b0110;
@@ -38,7 +44,7 @@ module motor_driver(
                 end
                 4'b1001: begin
                     n_counter = counter - 1;
-                    if(counter > 0) begin   // continue movement
+                    if(n_counter > 0) begin   // continue movement
                         n_hb_state = 4'b1010;
                         n_change = 1'b0;
                     end
@@ -48,7 +54,7 @@ module motor_driver(
                     end
                 end
                 default: begin// 4'b0000 TODO IS THIS COAST? SHOULD IT BE BRAKE?
-                    if(counter > 0) begin   // start movement
+                    if(n_counter > 0) begin   // start movement
                         n_hb_state = 4'b1010;
                         n_change = 1'b0;
                     end
@@ -58,10 +64,9 @@ module motor_driver(
                     end
                 end
             endcase
-
         end
-        else begin // FORWARD
 
+        else begin // FORWARD
             case(hb_state)
                 4'b1001: begin
                     n_hb_state = 4'b0101;
@@ -77,7 +82,7 @@ module motor_driver(
                 end
                 4'b1010: begin
                     n_counter = counter - 1;
-                    if(counter > 0) begin   // continue movement
+                    if(n_counter > 0) begin   // continue movement
                         n_hb_state = 4'b1001;
                         n_change = 1'b0;
                     end
@@ -87,17 +92,15 @@ module motor_driver(
                     end
                 end
                 default: begin// 4'b0000 TODO IS THIS COAST? SHOULD IT BE BRAKE?
-                    if(counter > 0) begin   // start movement
+                    if(n_counter > 0) begin   // start movement
                         n_hb_state = 4'b1001;
                         n_change = 1'b0;
-                    end
-                    else begin                // keep looking
-                        n_change = 1'b1;
+                    end else begin
+                        n_change = 1'b0;
                         n_hb_state = 4'b0000;
                     end
                 end
             endcase
-
         end
     end
 
@@ -107,21 +110,7 @@ module motor_driver(
             counter   <= 32'b0;
             hb_state  <= 4'b0000;
             change <= 1'b0;
-        end
-        else if (change) begin
-            if (dir_in) begin
-              dir <= dir_in;
-              counter <= counter_in;
-              hb_state <= n_hb_state;
-              change <= n_change;
-            end else begin
-              dir <= dir_in;
-              counter <= counter_in;
-              hb_state <= n_hb_state;
-              change <= n_change;
-            end
-        end
-        else begin
+        end else begin
             dir      <= n_dir;
             counter  <= n_counter;
             hb_state <= n_hb_state;

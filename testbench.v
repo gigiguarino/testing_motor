@@ -2,9 +2,9 @@ module testbench;
 
 reg clk;
 reg reset, en, sel, ready, error, fabint, pwrite;
-reg dir_in, dir_out, other_dir_in, other_dir_out;
-reg [31:0] counter_in, counter_out, other_counter_in, other_counter_out;
-reg [3:0] statex1, statex2;
+reg x_dir_in, x_dir_out, y_dir_in, y_dir_out;
+reg [31:0] x_counter_in, x_counter_out, y_counter_in, y_counter_out;
+reg [3:0] statex1, statex2, statey1, statey2;
 reg [31:0] pwdata, pwdata, paddr;
 
 motor_mmio_handler mm0(
@@ -18,50 +18,100 @@ motor_mmio_handler mm0(
   paddr,
   pwdata,
   prdata,
-  counter_in,
-  dir_in,
-  other_counter_in,
-  other_dir_in,
-  counter_out,
-  dir_out,
-  other_counter_out,
-  other_dir_out,
+  x_counter_in,
+  x_dir_in,
+  y_counter_in,
+  y_dir_in,
+  x_counter_out,
+  x_dir_out,
+  y_counter_out,
+  y_dir_out,
   fabint
 );
 
-motor_driver m(
+motor_driver mx(
   clk,
   reset,
-  counter_out,
-  dir_out,
+  fabint,
+  x_counter_out,
+  x_dir_out,
   statex1,
   statex2,
-  counter_in,
-  dir_in
+  x_counter_in,
+  x_dir_in
 );
+
+motor_driver my(
+  clk,
+  reset,
+  fabint,
+  y_counter_out,
+  y_dir_out,
+  statey1,
+  statey2,
+  y_counter_in,
+  y_dir_in
+);
+
+task print_stuff;
+  $display("-----------");
+  $display("INPUTS TO HANDLER");
+  $display("-----------");
+  $display("x_counter_in: %d", x_counter_in);
+  $display("x_dir_in: %b", x_dir_in);
+  $display("y_counter_in: %d", y_counter_in);
+  $display("y_dir_in: %b", y_dir_in);
+  $display("-----------");
+  $display("-----------");
+  $display("OUTPUTS OF HANDLER");
+  $display("-----------");
+  $display("x_counter_out: %d", x_counter_out);
+  $display("x_dir_out: %b", x_dir_out);
+  $display("y_counter_out: %d", y_counter_out);
+  $display("y_dir_out: %b", y_dir_out);
+  $display("fabint: %b", fabint);
+  $display("-----------");
+  $display("-----------");
+  $display("INPUTS TO XDRIVER");
+  $display("-----------");
+  $display("counter_in: %d", x_counter_out);
+  $display("dir_in: %b", x_dir_out);
+  $display("-----------");
+  $display("OUTPUTS OF XDRIVER");
+  $display("-----------");
+  $display("counter_out: %d", x_counter_in);
+  $display("dir_out: %b", x_dir_in);
+  $display("state: %b", statex1);
+  $display("-----------");
+  $display("-----------");
+  $display("INPUTS TO YDRIVER");
+  $display("-----------");
+  $display("counter_in: %d", y_counter_out);
+  $display("dir_in: %b", y_dir_out);
+  $display("-----------");
+  $display("OUTPUTS OF YDRIVER");
+  $display("-----------");
+  $display("counter_out: %d",y_counter_in);
+  $display("dir_out: %b", y_dir_in);
+  $display("state: %b", statey1);
+  $display("-----------");
+  $display("-----------");
+  $display("-----------");
+  $display("-----------");
+  $display("-----------");
+  $display("-----------");
+  $display("-----------");
+endtask
+
 
 always begin
   #5
   clk = ~clk;
 end
 
-task print_stuff;
-  $display("-----------");
-  $display("INPUTS");
-  $display("-----------");
-  $display("counter_in: %d", counter_out);
-  $display("dir_in: %b", dir_out);
-  $display("-----------");
-  $display("OUTPUTS");
-  $display("-----------");
-  $display("counter_out: %d", counter_in);
-  $display("dir_out: %b", dir_in);
-  $display("state: %b", statex1);
-  $display("-----------");
-  $display("-----------");
-  $display("-----------");
-  $display("-----------");
-endtask
+always @(posedge clk) begin
+  print_stuff;
+end
 
 
 initial begin
@@ -83,8 +133,14 @@ initial begin
   print_stuff;
   
   repeat (100) begin
-    @(negedge clk);
-    print_stuff;
+    @(posedge fabint);
+    pwdata = pwdata+1;
+    paddr = (paddr == 4) ? 1 : 4;
+    en = 1;
+    sel = 1;
+    @(posedge clk);
+    en = 0;
+    sel = 0;
   end
   
   $finish;  
