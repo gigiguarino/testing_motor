@@ -34,7 +34,7 @@ testbench.v
 sysc_uni_pwd=/home/gguarino/Documents/testing_motor
 _LMFILES_=/usr/caen/misc/modules/vcs/2015.09
 XMODIFIERS=@im=ibus
-XDG_SESSION_ID=488
+XDG_SESSION_ID=530
 XDG_RUNTIME_DIR=/run/user/99429461
 VMR_MODE_FLAG=64
 VCS_MODE_FLAG=64
@@ -45,9 +45,9 @@ VCS_ARCH=linux64
 UNAME=/bin/uname
 TOOL_HOME=/usr/caen/vcs-2015.09/linux64
 SW_VCS=2015.09
-SSH_TTY=/dev/pts/7
-SSH_CONNECTION=35.2.144.28 51086 141.213.74.69 22
-SSH_CLIENT=35.2.144.28 51086 22
+SSH_TTY=/dev/pts/0
+SSH_CONNECTION=35.2.144.28 51434 141.213.74.67 22
+SSH_CLIENT=35.2.144.28 51434 22
 SSH_ASKPASS=/usr/libexec/openssh/gnome-ssh-askpass
 SNPSLMD_LICENSE_FILE=/usr/caen/vcs-2015.09/license.dat
 SELINUX_USE_CURRENT_RANGE=
@@ -70,7 +70,7 @@ MAKEFLAGS=
 LOADEDMODULES=vcs/2015.09
 LESSOPEN=||/usr/bin/lesspipe.sh %s
 LC_ALL=C
-KRB5CCNAME=FILE:/tmp/krb5cc_99429461_kfEjTG
+KRB5CCNAME=FILE:/tmp/krb5cc_99429461_4BLpRn
 KDEDIRS=/usr
 HISTCONTROL=ignoredups
 GTK_IM_MODULE=ibus
@@ -79,11 +79,11 @@ BASH_FUNC_module()=() {  eval `/usr/bin/modulecmd bash $*`_}
 0
 3
 1491446430 motor_mmio_handler.v
-1492146608 motor_driver.v
+1492152929 motor_driver.v
 1492149172 testbench.v
 4
 0 
 1440563255 /usr/caen/vcs-2015.09/linux64/lib/libvirsim.so
 1440562843 /usr/caen/vcs-2015.09/linux64/lib/liberrorinf.so
 1440562824 /usr/caen/vcs-2015.09/linux64/lib/libsnpsmalloc.so
-1492149181 simv.daidir
+1492152939 simv.daidir

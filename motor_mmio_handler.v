@@ -24,6 +24,13 @@ module motor_mmio_handler(
 
         output wire FABINT
     );
+
+    reg n_x_dir_out, n_y_dir_out;
+    reg [31:0] n_x_counter_out, n_y_counter_out;
+    
+    wire write;
+    wire read;
+
     wire x_done;
     wire y_done;
     wire x_zero;
@@ -39,23 +46,42 @@ module motor_mmio_handler(
 
     assign FABINT = x_done | y_done;
 
+    assign PRDATA = 0;
     assign PSLVERR = 0;
     assign PREADY  = 1;
-	
-    // APB3 write control
+    
+    assign writex = (PSEL & PENABLE & PWRITE & ~PADDR[2]);
+    assign readx = (PSEL & PENABLE & ~PWRITE & ~PADDR[2]);
+    assign writey = (PSEL & PENABLE & PWRITE & PADDR[2]);
+    assign ready = (PSEL & PENABLE & ~PWRITE & PADDR[2]);
+
+    always @* begin
+       
+    end
+
+
     always @(posedge PCLK) begin
-        if(!PRESERN) begin
-            last_x_zero   <= 1;
-            last_y_zero   <= 1;
-            x_dir_out     <= 1;
-            y_dir_out     <= 1;
-            x_counter_out <= 0;
-            y_counter_out <= 0;
+      if (!PRESETN) begin
+      end else begin
+        
+        if (writex) begin
+          x_counter_out <=    
+        else if (writey) begin
+          x_counter_out <=
+          y_counter_out <=
+          x_dir_out <=
+          y_dir_out <= 
+        end else begin
+          x_counter_out <= n_x_counter_out;
+          y_counter_our <= n_y_counter_out;
+          x_dir_out <= n_x_dir_out;
+          y_dir_out <= n_y_dir_out;
         end
-        else begin
-            if(PSEL & PENABLE) begin
-                // On a write, convert signed count to dir and count
-                if(PWRITE) begin
+      end
+      
+    end
+
+
                     if(~PADDR[2]) begin
                         x_dir_out     <= ~PWDATA[31];
                         x_counter_out <= (~PWDATA[31])? PWDATA : ~PWDATA + 1;
@@ -63,41 +89,10 @@ module motor_mmio_handler(
                     else begin
                         y_dir_out     <= ~PWDATA[31];
                         y_counter_out <= (~PWDATA[31])? PWDATA : ~PWDATA + 1;
-                    end
-                end
-                // On a read, provide a signed count
                 else begin
                     if(~PADDR[2]) begin
                         PRDATA <= (x_dir_in)? x_counter_in : ~x_counter_in + 1;
                     end
                     else begin
                         PRDATA <= (y_dir_in)? y_counter_in : ~y_counter_in + 1;
-                    end
-                end
-            end
-            else begin
-
-                if(x_done) begin
-                    x_dir_out     <= 0;
-                    x_counter_out <= 0;
-                end
-                else begin
-                    x_dir_out     <= x_dir_out;
-                    x_counter_out <= x_counter_out;
-                end
-
-                if(y_done) begin
-                    y_dir_out     <= 0;
-                    y_counter_out <= 0;
-                end
-                else begin
-                    y_dir_out     <= y_dir_out;
-                    y_counter_out <= y_counter_out;
-                end
-
-            end
-        end
-        last_x_zero <= x_zero;
-        last_y_zero <= y_zero;
-    end
 endmodule

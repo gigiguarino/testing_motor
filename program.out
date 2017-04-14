@@ -1,6 +1,6 @@
 Chronologic VCS simulator copyright 1991-2015
 Contains Synopsys proprietary information.
-Compiler version K-2015.09_Full64; Runtime version K-2015.09_Full64;  Apr 14 01:53 2017
+Compiler version K-2015.09_Full64; Runtime version K-2015.09_Full64;  Apr 14 02:55 2017
 -----------
 INPUTS
 -----------
@@ -11,7 +11,67 @@ OUTPUTS
 -----------
 counter_out:          0
 dir_out: 1
-state: 1010
+state: 0000
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          5
+dir_in: 1
+-----------
+OUTPUTS
+-----------
+counter_out:          5
+dir_out: 1
+state: 0000
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          5
+dir_in: 1
+-----------
+OUTPUTS
+-----------
+counter_out:          5
+dir_out: 1
+state: 1001
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          5
+dir_in: 1
+-----------
+OUTPUTS
+-----------
+counter_out:          5
+dir_out: 1
+state: 0101
+-----------
+-----------
+-----------
+-----------
+-----------
+INPUTS
+-----------
+counter_in:          5
+dir_in: 1
+-----------
+OUTPUTS
+-----------
+counter_out:          5
+dir_out: 1
+state: 0110
 -----------
 -----------
 -----------
@@ -339,74 +399,14 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
-dir_out: 0
-state: 1001
------------
------------
------------
------------
------------
-INPUTS
------------
-counter_in:          0
-dir_in: 0
------------
-OUTPUTS
------------
-counter_out:          0
-dir_out: 0
-state: 1001
------------
------------
------------
------------
------------
-INPUTS
------------
-counter_in:          0
-dir_in: 0
------------
-OUTPUTS
------------
-counter_out:          0
-dir_out: 0
-state: 1001
------------
------------
------------
------------
------------
-INPUTS
------------
-counter_in:          0
-dir_in: 0
------------
-OUTPUTS
------------
-counter_out:          0
-dir_out: 0
-state: 1001
------------
------------
------------
------------
------------
-INPUTS
------------
-counter_in:          0
-dir_in: 0
------------
-OUTPUTS
+counter_out: 4294967295
+dir_out: 1
+state: 0000
 -----------
-counter_out:          0
-dir_out: 0
-state: 1001
 -----------
 -----------
 -----------
 -----------
------------
 INPUTS
 -----------
 counter_in:          0
@@ -429,9 +429,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967295
 dir_out: 0
-state: 1001
+state: 1010
 -----------
 -----------
 -----------
@@ -444,9 +444,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967295
 dir_out: 0
-state: 1001
+state: 0110
 -----------
 -----------
 -----------
@@ -459,9 +459,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967295
 dir_out: 0
-state: 1001
+state: 0101
 -----------
 -----------
 -----------
@@ -474,7 +474,7 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967295
 dir_out: 0
 state: 1001
 -----------
@@ -489,9 +489,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967294
 dir_out: 0
-state: 1001
+state: 1010
 -----------
 -----------
 -----------
@@ -504,9 +504,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967294
 dir_out: 0
-state: 1001
+state: 0110
 -----------
 -----------
 -----------
@@ -519,9 +519,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967294
 dir_out: 0
-state: 1001
+state: 0101
 -----------
 -----------
 -----------
@@ -534,7 +534,7 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967294
 dir_out: 0
 state: 1001
 -----------
@@ -549,9 +549,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967293
 dir_out: 0
-state: 1001
+state: 1010
 -----------
 -----------
 -----------
@@ -564,9 +564,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967293
 dir_out: 0
-state: 1001
+state: 0110
 -----------
 -----------
 -----------
@@ -579,9 +579,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967293
 dir_out: 0
-state: 1001
+state: 0101
 -----------
 -----------
 -----------
@@ -594,7 +594,7 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967293
 dir_out: 0
 state: 1001
 -----------
@@ -609,9 +609,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967292
 dir_out: 0
-state: 1001
+state: 1010
 -----------
 -----------
 -----------
@@ -624,9 +624,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967292
 dir_out: 0
-state: 1001
+state: 0110
 -----------
 -----------
 -----------
@@ -639,9 +639,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967292
 dir_out: 0
-state: 1001
+state: 0101
 -----------
 -----------
 -----------
@@ -654,7 +654,7 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967292
 dir_out: 0
 state: 1001
 -----------
@@ -669,9 +669,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967291
 dir_out: 0
-state: 1001
+state: 1010
 -----------
 -----------
 -----------
@@ -684,9 +684,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967291
 dir_out: 0
-state: 1001
+state: 0110
 -----------
 -----------
 -----------
@@ -699,9 +699,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967291
 dir_out: 0
-state: 1001
+state: 0101
 -----------
 -----------
 -----------
@@ -714,7 +714,7 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967291
 dir_out: 0
 state: 1001
 -----------
@@ -729,9 +729,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967290
 dir_out: 0
-state: 1001
+state: 1010
 -----------
 -----------
 -----------
@@ -744,9 +744,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967290
 dir_out: 0
-state: 1001
+state: 0110
 -----------
 -----------
 -----------
@@ -759,9 +759,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967290
 dir_out: 0
-state: 1001
+state: 0101
 -----------
 -----------
 -----------
@@ -774,7 +774,7 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967290
 dir_out: 0
 state: 1001
 -----------
@@ -789,9 +789,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967289
 dir_out: 0
-state: 1001
+state: 1010
 -----------
 -----------
 -----------
@@ -804,9 +804,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967289
 dir_out: 0
-state: 1001
+state: 0110
 -----------
 -----------
 -----------
@@ -819,9 +819,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967289
 dir_out: 0
-state: 1001
+state: 0101
 -----------
 -----------
 -----------
@@ -834,7 +834,7 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967289
 dir_out: 0
 state: 1001
 -----------
@@ -849,9 +849,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967288
 dir_out: 0
-state: 1001
+state: 1010
 -----------
 -----------
 -----------
@@ -864,9 +864,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967288
 dir_out: 0
-state: 1001
+state: 0110
 -----------
 -----------
 -----------
@@ -879,9 +879,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967288
 dir_out: 0
-state: 1001
+state: 0101
 -----------
 -----------
 -----------
@@ -894,7 +894,7 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967288
 dir_out: 0
 state: 1001
 -----------
@@ -909,9 +909,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967287
 dir_out: 0
-state: 1001
+state: 1010
 -----------
 -----------
 -----------
@@ -924,9 +924,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967287
 dir_out: 0
-state: 1001
+state: 0110
 -----------
 -----------
 -----------
@@ -939,9 +939,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967287
 dir_out: 0
-state: 1001
+state: 0101
 -----------
 -----------
 -----------
@@ -954,7 +954,7 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967287
 dir_out: 0
 state: 1001
 -----------
@@ -969,9 +969,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967286
 dir_out: 0
-state: 1001
+state: 1010
 -----------
 -----------
 -----------
@@ -984,9 +984,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967286
 dir_out: 0
-state: 1001
+state: 0110
 -----------
 -----------
 -----------
@@ -999,9 +999,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967286
 dir_out: 0
-state: 1001
+state: 0101
 -----------
 -----------
 -----------
@@ -1014,7 +1014,7 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967286
 dir_out: 0
 state: 1001
 -----------
@@ -1029,9 +1029,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967285
 dir_out: 0
-state: 1001
+state: 1010
 -----------
 -----------
 -----------
@@ -1044,9 +1044,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967285
 dir_out: 0
-state: 1001
+state: 0110
 -----------
 -----------
 -----------
@@ -1059,9 +1059,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967285
 dir_out: 0
-state: 1001
+state: 0101
 -----------
 -----------
 -----------
@@ -1074,7 +1074,7 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967285
 dir_out: 0
 state: 1001
 -----------
@@ -1089,9 +1089,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967284
 dir_out: 0
-state: 1001
+state: 1010
 -----------
 -----------
 -----------
@@ -1104,9 +1104,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967284
 dir_out: 0
-state: 1001
+state: 0110
 -----------
 -----------
 -----------
@@ -1119,9 +1119,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967284
 dir_out: 0
-state: 1001
+state: 0101
 -----------
 -----------
 -----------
@@ -1134,7 +1134,7 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967284
 dir_out: 0
 state: 1001
 -----------
@@ -1149,9 +1149,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967283
 dir_out: 0
-state: 1001
+state: 1010
 -----------
 -----------
 -----------
@@ -1164,9 +1164,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967283
 dir_out: 0
-state: 1001
+state: 0110
 -----------
 -----------
 -----------
@@ -1179,9 +1179,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967283
 dir_out: 0
-state: 1001
+state: 0101
 -----------
 -----------
 -----------
@@ -1194,7 +1194,7 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967283
 dir_out: 0
 state: 1001
 -----------
@@ -1209,9 +1209,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967282
 dir_out: 0
-state: 1001
+state: 1010
 -----------
 -----------
 -----------
@@ -1224,9 +1224,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967282
 dir_out: 0
-state: 1001
+state: 0110
 -----------
 -----------
 -----------
@@ -1239,9 +1239,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967282
 dir_out: 0
-state: 1001
+state: 0101
 -----------
 -----------
 -----------
@@ -1254,7 +1254,7 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967282
 dir_out: 0
 state: 1001
 -----------
@@ -1269,9 +1269,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967281
 dir_out: 0
-state: 1001
+state: 1010
 -----------
 -----------
 -----------
@@ -1284,9 +1284,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967281
 dir_out: 0
-state: 1001
+state: 0110
 -----------
 -----------
 -----------
@@ -1299,9 +1299,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967281
 dir_out: 0
-state: 1001
+state: 0101
 -----------
 -----------
 -----------
@@ -1314,7 +1314,7 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967281
 dir_out: 0
 state: 1001
 -----------
@@ -1329,9 +1329,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967280
 dir_out: 0
-state: 1001
+state: 1010
 -----------
 -----------
 -----------
@@ -1344,9 +1344,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967280
 dir_out: 0
-state: 1001
+state: 0110
 -----------
 -----------
 -----------
@@ -1359,9 +1359,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967280
 dir_out: 0
-state: 1001
+state: 0101
 -----------
 -----------
 -----------
@@ -1374,7 +1374,7 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967280
 dir_out: 0
 state: 1001
 -----------
@@ -1389,9 +1389,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967279
 dir_out: 0
-state: 1001
+state: 1010
 -----------
 -----------
 -----------
@@ -1404,9 +1404,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967279
 dir_out: 0
-state: 1001
+state: 0110
 -----------
 -----------
 -----------
@@ -1419,9 +1419,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967279
 dir_out: 0
-state: 1001
+state: 0101
 -----------
 -----------
 -----------
@@ -1434,7 +1434,7 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967279
 dir_out: 0
 state: 1001
 -----------
@@ -1449,9 +1449,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967278
 dir_out: 0
-state: 1001
+state: 1010
 -----------
 -----------
 -----------
@@ -1464,9 +1464,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967278
 dir_out: 0
-state: 1001
+state: 0110
 -----------
 -----------
 -----------
@@ -1479,9 +1479,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967278
 dir_out: 0
-state: 1001
+state: 0101
 -----------
 -----------
 -----------
@@ -1494,7 +1494,7 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967278
 dir_out: 0
 state: 1001
 -----------
@@ -1509,9 +1509,9 @@ dir_in: 0
 -----------
 OUTPUTS
 -----------
-counter_out:          0
+counter_out: 4294967277
 dir_out: 0
-state: 1001
+state: 1010
 -----------
 -----------
 -----------
@@ -1520,5 +1520,5 @@ $finish called from file "testbench.v", line 90.
 $finish at simulation time                 1020
            V C S   S i m u l a t i o n   R e p o r t 
 Time: 1020
-CPU Time:      0.600 seconds;       Data structure size:   0.0Mb
-Fri Apr 14 01:53:03 2017
+CPU Time:      0.500 seconds;       Data structure size:   0.0Mb
+Fri Apr 14 02:55:45 2017

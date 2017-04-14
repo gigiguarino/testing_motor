@@ -38,7 +38,7 @@ module motor_driver(
                 end
                 4'b1001: begin
                     n_counter = counter - 1;
-                    if(n_counter > 0) begin   // continue movement
+                    if(counter > 0) begin   // continue movement
                         n_hb_state = 4'b1010;
                         n_change = 1'b0;
                     end
@@ -48,7 +48,7 @@ module motor_driver(
                     end
                 end
                 default: begin// 4'b0000 TODO IS THIS COAST? SHOULD IT BE BRAKE?
-                    if(n_counter > 0) begin   // start movement
+                    if(counter > 0) begin   // start movement
                         n_hb_state = 4'b1010;
                         n_change = 1'b0;
                     end
@@ -107,7 +107,6 @@ module motor_driver(
             counter   <= 32'b0;
             hb_state  <= 4'b0000;
             change <= 1'b0;
-
         end
         else if (change) begin
             if (dir_in) begin
