@@ -9,7 +9,7 @@ module motor_driver(
         output reg dir
     );
     reg [31:0] n_counter;
-    reg n_dir, change;
+    reg n_dir, n_change, change;
     reg [3:0] n_hb_state;
 
     assign hb_state_debug = hb_state;
@@ -19,35 +19,42 @@ module motor_driver(
         n_counter = counter;
         n_hb_state = hb_state;
         n_dir = dir;
-        change = 0;
+        n_change = change;
 
         if(!dir) begin // REVERSE
 
             case(hb_state)
                 4'b1010: begin
                     n_hb_state = 4'b0110;
+                    n_change = 1'b0;
                 end
                 4'b0110: begin
                     n_hb_state = 4'b0101;
+                    n_change = 1'b0;
                 end
                 4'b0101: begin
                     n_hb_state = 4'b1001;
+                    n_change = 1'b0;
                 end
                 4'b1001: begin
                     n_counter = counter - 1;
-                    if(counter > 0) begin   // continue movement
+                    if(n_counter > 0) begin   // continue movement
                         n_hb_state = 4'b1010;
+                        n_change = 1'b0;
                     end
                     else begin
-                        change = 1'b1;
+                        n_change = 1'b1;
+                        n_hb_state = 4'b0000;
                     end
                 end
                 default: begin// 4'b0000 TODO IS THIS COAST? SHOULD IT BE BRAKE?
-                    if(counter > 0) begin   // start movement
+                    if(n_counter > 0) begin   // start movement
                         n_hb_state = 4'b1010;
+                        n_change = 1'b0;
                     end
                     else begin                // keep looking
-                        change = 1'b1;
+                        n_change = 1'b1;
+                        n_hb_state = 4'b0000;
                     end
                 end
             endcase
@@ -58,28 +65,35 @@ module motor_driver(
             case(hb_state)
                 4'b1001: begin
                     n_hb_state = 4'b0101;
+                    n_change = 1'b0;
                 end
                 4'b0101: begin
                     n_hb_state = 4'b0110;
+                    n_change = 1'b0;
                 end
                 4'b0110: begin
                     n_hb_state = 4'b1010;
+                    n_change = 1'b0;
                 end
                 4'b1010: begin
                     n_counter = counter - 1;
                     if(counter > 0) begin   // continue movement
                         n_hb_state = 4'b1001;
+                        n_change = 1'b0;
                     end
                     else begin                // end movement
-                        change = 1'b1;
+                        n_change = 1'b1;
+                        n_hb_state = 4'b0000;
                     end
                 end
                 default: begin// 4'b0000 TODO IS THIS COAST? SHOULD IT BE BRAKE?
                     if(counter > 0) begin   // start movement
                         n_hb_state = 4'b1001;
+                        n_change = 1'b0;
                     end
                     else begin                // keep looking
-                        change = 1'b1;
+                        n_change = 1'b1;
+                        n_hb_state = 4'b0000;
                     end
                 end
             endcase
@@ -92,22 +106,27 @@ module motor_driver(
             dir       <= 1'b1;
             counter   <= 32'b0;
             hb_state  <= 4'b0000;
+            change <= 1'b0;
+
         end
         else if (change) begin
             if (dir_in) begin
               dir <= dir_in;
               counter <= counter_in;
-              hb_state <= 4'b1010;
+              hb_state <= n_hb_state;
+              change <= n_change;
             end else begin
               dir <= dir_in;
               counter <= counter_in;
-              hb_state <= 4'b1001;
+              hb_state <= n_hb_state;
+              change <= n_change;
             end
         end
         else begin
             dir      <= n_dir;
             counter  <= n_counter;
             hb_state <= n_hb_state;
+            change <= n_change;
         end
     end
 endmodule
