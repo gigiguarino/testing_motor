@@ -6,10 +6,13 @@ reg x_dir_in, x_dir_out, y_dir_in, y_dir_out;
 reg [31:0] x_counter_in, x_counter_out, y_counter_in, y_counter_out;
 reg [3:0] statex1, statex2, statey1, statey2;
 reg [31:0] pwdata, pwdata, paddr;
+reg x_done, y_done;
 
 motor_mmio_handler mm0(
   clk,
   reset,
+  x_done,
+  y_done,
   sel,
   en,
   ready,
@@ -38,7 +41,8 @@ motor_driver mx(
   statex1,
   statex2,
   x_counter_in,
-  x_dir_in
+  x_dir_in,
+  x_done
 );
 
 motor_driver my(
@@ -50,7 +54,8 @@ motor_driver my(
   statey1,
   statey2,
   y_counter_in,
-  y_dir_in
+  y_dir_in,
+  y_done
 );
 
 task print_stuff;
@@ -59,8 +64,10 @@ task print_stuff;
   $display("-----------");
   $display("x_counter_in: %d", x_counter_in);
   $display("x_dir_in: %b", x_dir_in);
+  $display("x_done: %b", x_done);
   $display("y_counter_in: %d", y_counter_in);
   $display("y_dir_in: %b", y_dir_in);
+  $display("y_done: %b", y_done);
   $display("-----------");
   $display("-----------");
   $display("OUTPUTS OF HANDLER");
@@ -81,6 +88,7 @@ task print_stuff;
   $display("-----------");
   $display("counter_out: %d", x_counter_in);
   $display("dir_out: %b", x_dir_in);
+  $display("x_done: %b", x_done);
   $display("state: %b", statex1);
   $display("-----------");
   $display("-----------");
@@ -93,6 +101,7 @@ task print_stuff;
   $display("-----------");
   $display("counter_out: %d",y_counter_in);
   $display("dir_out: %b", y_dir_in);
+  $display("y_done: %b", y_done);
   $display("state: %b", statey1);
   $display("-----------");
   $display("-----------");

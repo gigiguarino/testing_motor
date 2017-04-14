@@ -16,6 +16,9 @@ module motor_mmio_handler(
         input        x_dir_in,
         input [31:0] y_counter_in,
         input        y_dir_in,
+  
+        input x_done,
+        input y_done,
 
         output reg  [31:0] x_counter_out,
         output reg         x_dir_out,
@@ -25,7 +28,7 @@ module motor_mmio_handler(
         output reg fabint
     );
 
-    reg n_x_dir_out, n_y_dir_out, n_fabint;
+    reg n_x_dir_out, n_y_dir_out;
     reg [31:0] n_x_counter_out, n_y_counter_out;
     reg start, x_done, y_done;
     
@@ -38,23 +41,18 @@ module motor_mmio_handler(
     assign writex = (PSEL & PENABLE & PWRITE & ~PADDR[2]);
     assign writey = (PSEL & PENABLE & PWRITE & PADDR[2]);
     
-    assign x_done = x_change | ;
-    assign y_done = y_change;
-
-
     always @* begin
        n_x_counter_out = x_counter_out;
        n_y_counter_out = y_counter_out;
        n_y_dir_out = y_dir_out;
        n_x_dir_out = x_dir_out;
-       n_fabint = fabint;
        
        if (x_done && y_done)
        begin
-          n_fabint = 1;
+          fabint = 1;
        end
        else begin
-          n_fabint = 0;
+          fabint = 0;
        end
     end
 
